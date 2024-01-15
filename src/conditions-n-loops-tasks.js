@@ -442,16 +442,17 @@ function rotateMatrix(matrix) {
  */
 function sortByAsc(arr) {
   const array = arr;
-  for (let i = 0; i < array.length; i += 1) {
-    for (let j = i + 1; j < array.length; j += 1) {
-      if (array[i] > array[j]) {
-        const temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-      }
+  for (let i = 1; i < array.length; i += 1) {
+    const currentValue = array[i];
+    let j = i - 1;
+
+    while (j >= 0 && array[j] > currentValue) {
+      array[j + 1] = array[j];
+      j -= 1;
     }
+    array[j + 1] = currentValue;
   }
-  return array;
+  return arr;
 }
 
 /**
